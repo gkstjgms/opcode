@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+  <script>
+    /* 
+    주 5일(*5), 왕복(*2) = 한 주(*10)
+    - 1학기 3/16(월)~6/26(금) 15주 / *150
+    - 2학기 9/1(화)~12/21(월) 16주 / *310
+    -> 한 학기 기준을 그냥 15주로 통일하는 편이 나을 듯
+ 
+    지금까지 길에서 보낸 시간 input: fromhour, fromminute
+    앞으로 보낼 시간 8-input: until
+    시급 8590원: salary 
+    국밥 6000원: dish
+    에베레스트 등반 횟수 8846m: everest
+    지구 바퀴 횟수 40075km: earth
+ 
+    - 임시 변수
+    시간 time (시간)
+    거리 distance (m)
+    교통비 costs 
+    */
+
+    var semester = 'sem-3-1' //document.getElementById('semester').value //넣을 시 document.write 부분이 삭제되는 현상
+    var input = 0
+
+    var from, until, salary, dish, everest, earth
+
+    // 임시값 지정
+    var time = 2
+    var distance = 30000
+    var costs = 100000
+
+    function sum(sem) {
+      from = sem * time * 150
+      until = (8 - sem) * time * 150
+      salary = from * 8590
+      dish = Math.floor((costs * 150) / 6000)
+      everest = Math.floor((distance * 2) / 8846)
+      earth = ((distance * 2) / 40075000).toFixed(3)
+    }
+    if (semester == 'sem-1-1') {
+      input = 1
+      sum(input)
+    }
+    else if (semester == 'sem-1-2') {
+      input = 2
+      sum(input)
+    }
+    else if (semester == 'sem-2-1') {
+      input = 3
+      sum(input)
+    }
+    else if (semester == 'sem-2-2') {
+      input = 4
+      sum(input)
+    }
+    else if (semester == 'sem-3-1') {
+      input = 5
+      sum(input)
+    }
+    else if (semester == 'sem-3-2') {
+      input = 6
+      sum(input)
+    }
+    else if (semester == 'sem-4-1') {
+      input = 7
+      sum(input)
+    }
+    else if (semester == 'sem-4-2') {
+      input = 8
+      sum(input)
+    }
+  </script>
+
+  <div class="container question-field">
+    <div class="question-text">몇학년인가요?</div>
+    <div class="question-input">
+      <select name="semester" id="semester">
+        <option value="sem-1-1">1학년 1학기</option>
+        <option value="sem-1-2">1학년 2학기</option>
+        <option value="sem-2-1">2학년 1학기</option>
+        <option value="sem-2-2">2학년 2학기</option>
+        <option value="sem-3-1">3학년 1학기</option>
+        <option value="sem-3-2">3학년 2학기</option>
+        <option value="sem-4-1">4학년 1학기</option>
+        <option value="sem-4-2">4학년 2학기</option>
+      </select>
+    </div>
+  </div>
+  <div class="container button-field">
+    <button class="button_calculate" type="button">
+      계산해보기
+    </button>
+  </div>
+  <div class="row">
+    <div id="list-answer">
+      <div class="answer-field" id="answer-how-many-hours">
+        <script>
+          document.write("지금까지 <span class='answer-highlight'>" + from + "</span>시간을 길에서 보내셨군요.<br>")
+          document.write("졸업까지 앞으로 <span class='answer-highlight'>" + until + "</span>시간은 더 길에서 보내시면 됩니다.<br>")
+        </script>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="answer-detail-question">
+      이 시간에 알바를 했다면? <br>
+      교통비로 국밥 <br>
+      이 거리라면 에베레스트 등반 횟수가 <br>
+      지구를 몇 바퀴나? <br>
+    </div>
+    <div class="answer-detail-answer">
+      <script>
+        document.write(`${salary}원<br>`)
+        document.write(`${dish}그릇<br>`)
+        document.write(`${everest}번<br>`)
+        document.write(`${earth}바퀴<br>`)
+      </script>
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>
